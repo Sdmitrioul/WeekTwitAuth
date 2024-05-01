@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: createTable-tokens
+      author: dmitri4skroba
+      failOnError: true
+      changes:
+        - createTable:
+            tableName: tokens
+            columns:
+              - column:
+                  name: id
+                  type: ${id}
+                  autoIncrement: true
+                  generationType: ALWAYS
+                  incrementBy: 1
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: token
+                  type: ${description}
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: ${id}
+                  constraints:
+                    nullable: false
+                    referencedTableName: users
+                    foreignKeyName: id
+              - column:
+                  name: expired
+                  type: ${bool}
+              - column:
+                  name: revoked
+                  type: ${bool}

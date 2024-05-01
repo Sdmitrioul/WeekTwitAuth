@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: createTable-users
+      runOrder: first
+      author: dmitri4skroba
+      failOnError: true
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: ${id}
+                  autoIncrement: true
+                  generationType: ALWAYS
+                  incrementBy: 1
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: firstname
+                  type: ${label}
+              - column:
+                  name: lastname
+                  type: ${label}
+              - column:
+                  name: email
+                  type: ${label}
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: ${description}
+                  constraints:
+                    nullable: false
